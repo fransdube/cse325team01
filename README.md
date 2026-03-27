@@ -1,4 +1,4 @@
-# TodoApp - Simple Task Manager
+# TaskFlow - Simple Task Manager
 
 ## Project Description
 A simple Task Manager / To-Do List web application using C# .NET Core with Blazor. It uses pure Static Server-Side Rendering (SSR) for a clean, minimalist application.
@@ -18,7 +18,8 @@ A simple Task Manager / To-Do List web application using C# .NET Core with Blazo
 ### How to Run the Application
 1. Open a terminal and navigate to the project root directory where the `.sln` or `TodoApp.csproj` is located:
    ```bash
-   cd TodoApp/TodoApp
+   cd TodoApp
+   cd TodoApp
    ```
 2. Build and run the project using the .NET CLI:
    ```bash
