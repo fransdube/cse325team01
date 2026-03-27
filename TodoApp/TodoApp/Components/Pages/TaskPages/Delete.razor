@@ -10,7 +10,7 @@
 @inject NavigationManager NavigationManager
 
 @code {
-    [SupplyParameterFromForm]
+    [SupplyParameterFromForm(FormName = "delete")]
     public int Id { get; set; }
 
     protected override async Task OnInitializedAsync()
