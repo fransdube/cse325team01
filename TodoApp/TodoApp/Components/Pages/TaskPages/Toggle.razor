@@ -10,13 +10,13 @@
 @inject NavigationManager NavigationManager
 
 @code {
-    [SupplyParameterFromForm]
+    [SupplyParameterFromForm(FormName = "toggle")]
     public int Id { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine($"[DEBUG] Toggle.razor initialized. POST={HttpMethods.IsPost(NavigationManager.Uri)}, Id={Id}");
-        if (HttpMethods.IsPost(NavigationManager.Uri))
+        Console.WriteLine($"[DEBUG] Toggle.razor initialized. Id={Id}");
+        if (Id > 0)
         {
             var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
             var userId = authState.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
@@ -25,11 +25,7 @@
             {
                 await TaskService.ToggleTaskCompletionAsync(Id, userId);
             }
-            NavigationManager.NavigateTo("/tasks");
         }
-        else
-        {
-            NavigationManager.NavigateTo("/tasks");
-        }
+        NavigationManager.NavigateTo("/tasks");
     }
 }

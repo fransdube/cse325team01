@@ -10,12 +10,12 @@
 @inject NavigationManager NavigationManager
 
 @code {
-    [SupplyParameterFromForm]
+    [SupplyParameterFromForm(FormName = "delete")]
     public int Id { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        if (HttpMethods.IsPost(NavigationManager.Uri))
+        if (Id > 0)
         {
             var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
             var userId = authState.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
@@ -24,11 +24,7 @@
             {
                 await TaskService.DeleteTaskAsync(Id, userId);
             }
-            NavigationManager.NavigateTo("/tasks");
         }
-        else
-        {
-            NavigationManager.NavigateTo("/tasks");
-        }
+        NavigationManager.NavigateTo("/tasks");
     }
 }
