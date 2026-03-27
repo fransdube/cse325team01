@@ -10,7 +10,7 @@
 @inject NavigationManager NavigationManager
 
 @code {
-    [SupplyParameterFromForm(FormName = "toggle")]
+    [SupplyParameterFromForm]
     public int Id { get; set; }
 
     protected override async Task OnInitializedAsync()
